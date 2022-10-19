@@ -8,11 +8,11 @@ public class Model {
     static Player p1 = new Player(1);
     static Room currentRoom;
 
-    public static StringBuilder getRoom(){
+    /*[NAJEE]*/public static StringBuilder getRoom(){
         return currentRoom.getDesc();
     }
 
-    public static StringBuilder getDirectionList(){
+    /*[NAJEE]*/public static StringBuilder getDirectionList(){
         double[] tmpArr = currentRoom.getDirections();
         StringBuilder dirList = new StringBuilder();
         for (int i = 0; i < 4; i++){
