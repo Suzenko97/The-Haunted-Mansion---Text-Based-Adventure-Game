@@ -1,0 +1,32 @@
+Demon
+1
+He was a human who lived in a mansion. He discovers a dark spell. After taking the dark spell, it turns him into a monster. The
+demon is the main boss in the game, and the player must defeat
+him to get the final key shard and exit the haunted mansion.
+1500
+750-1000
+Final Key Piece
+Frankenstein
+2
+A creepy monster with translucent yellow skin, gleaming eyes, flowing black hair, black lips, and prominent white teeth.
+1200
+800
+Rage Up, Armor
+Werewolve
+3
+A werewolf is a person who turns into a werewolf at night and eats people or any other living things, but returns to human form during the day. Werewolves are melee monsters, and they are very fast.
+1000
+700
+Third Key Shard
+Witch
+4
+A woman who is possessed by an evil spell. She is a long ranged monster, and she can spawn strong skeletons. She has a chance of dropping a ranged spell.
+900
+152
+Second Key Piece
+Vampire
+5
+A dead monster comes from the grave at night and sucks the person's blood. The vampire is a closed-range monster and has a weakness of light.
+721
+100
+First Key Piece
