@@ -1,0 +1,119 @@
+--MAP CHANGES--
+- Hallways will be broken into segments to allow easier travel.
+- *Room with weapon initiates promtp????? <See map notes>*
+- No escape key from options. Room options will remain until player moves, but other commands can still be entered.
+- VERY heafty changes made to room descriptions.
+
+--COMMAND--
+"Enter Room" + <Room Number>
+Logic : When player enters a room they are presented with a description, then they are given choices of rooms to go to. They type in the command and choose a room from the selected list.
+	IF - Option valid : Player moves to new room
+	IF - Option invalid : Player stays in room and is given 			      error message
+---Structure---
+Room #
+Room Name
+Room Desc
+*Puzzle ID* (Leave this blank since puzzles are randomized)
+
+_____Attic_____
+Attic
+1
+Dusty attic with one trap door that leads into the mansion.
+
+_____Floor 1_____
+Hallway 1
+2.1
+You are in a hallway.
+Hallway 1
+2.2
+You are further down the hallway.
+Room 1
+3
+Old Room. Torn bed on the side. Windows are boarded up, the only source of light in the room is a candle sitting on a table. Next to the candle is a torn book. The book has a code to open.
+Room 2
+4
+You see a cross. Under the cross is a bloody wooden stake and a glass of holy water.
+Room 3
+5
+Nothing to see here, or is there?
+Room 4
+6
+Completely dark. You need to use the flashlight to see.
+
+_____Floor 2_____
+Hallway 2
+7.1
+You are in a hallway.
+Hallway 2
+7.2
+You are further down the hallway.
+Room 1
+8
+An empty room, besides a chest in the corner.
+Room 2
+9
+A dark room surrounded by melting candles.
+Room 3
+10
+The room is broken and battered. There is one lightbulb hanging from the ceiling. Under the lightbulb is a wooden table with a single piece of paper on it.
+Room 4
+11
+The room is filled with fog, but there doesn't seem to be any windows where the fog can get in.
+Room 5
+12
+The room is filled with smoke from a boiling pot.
+
+_____Floor 3_____
+Hallway 3
+13.1
+You are in a hallway.It is well lit but the lights do flicker from time to time as you pass them by.
+Hallway 3
+13.2
+You are further down the hallway.
+Room 1
+14
+The room is famp and wet. There isn't enough light to see what exactly the liquid is. There's a chest in the east corner of the room.
+Room 2
+15
+You come upon a sphinx sitting on a throne of skulls in the middle of the room.
+Room 3
+16
+There doesn't seem to be anything in this room but a puzzle.
+Room 4
+17
+There's a work desk on the south side of the room. On it you find a weapon, scraps of metal, metal shavings, torn and unused wires, gears, and work tools.
+Room 5
+18
+There is a Frankenstein monster whose arms are bound by chains hanging from the ceiling.
+
+
+_____Floor 4_____
+Hallway 4
+19.2
+This hallway is creepier than the others. There is little light coming from the open curtains. You're able to see outside and you notice the moon is full.
+Hallway 4
+19.2
+Further down the hallway.
+Room 1 
+20
+A trap room.
+Room 2
+21
+A room with a chest on one side of it.
+Room 3
+22
+The sphinx is different in this room. She is covered in dark blood and has skulls littered throughout the floor.
+Room 4
+23
+A room with a chest on one side of it.
+Room 5
+24
+This room is completely full of glass windows.
+
+_____Floor 5_____
+Hallway 5
+25
+This hallway is completely dark. there are no rooms except for the one ahead, whcih you notice has red light emananting from the crack of the door.
+Exit Room
+26
+This room is the scariest. The exit door is up ahead.
