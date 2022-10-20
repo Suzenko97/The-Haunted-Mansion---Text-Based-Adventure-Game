@@ -97,6 +97,21 @@ public class Model {
         }
         inputFile.close();
 
+        fileName = "monster_data.txt";
+        theFile = new File(fileName);
+        inputFile = new Scanner(theFile);
+        while (inputFile.hasNextLine()) {
+            String name = inputFile.nextLine();
+            int location = inputFile.nextInt();
+            String description = inputFile.nextLine();
+            int health =inputFile.nextInt();
+            int damage = inputFile.nextInt();
+
+            Monster monster= new Monster(name,location,description,health,damage);
+            Monster.monsterList.add(monster);
+        }
+        inputFile.close();
+
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
     }
