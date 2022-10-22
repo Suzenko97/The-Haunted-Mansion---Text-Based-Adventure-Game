@@ -23,4 +23,8 @@ public class ConsoleView {
     public static void quitMessage(){
         System.out.println("Thank you for playing!");
     }
+
+    public static void startCombatMessage(String monsterName){System.out.println("Would you like to begin combat? "+monsterName);}
+
+    public static void monsterInspectMessage(String monsterInspect){System.out.println("Monster Info: "+monsterInspect);}
 }

@@ -25,9 +25,13 @@ public class Controller {
                         ConsoleView.navDenial();
                     }
             }
+            else if(input.contains("inspect monster")){
+                Model.inspectMonster();
+            }
             else if (input.contains("exit")){
                 play = false;
             }
+
         }
         ConsoleView.quitMessage();
         Model.quitGame();

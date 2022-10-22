@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Player {
+
     private double location;
 
     public Player (double initRoom){

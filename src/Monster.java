@@ -2,21 +2,27 @@ import java.util.ArrayList;
 
 public class Monster {
 
+
     private String name;
-    private int location;
+    private double location;
     private String description;
     private int health;
     private int damage;
-
+    private String items;
     static ArrayList<Monster> monsterList= new ArrayList<Monster>();
 
-    public Monster(String name, int location, String description, int health, int damage){
+    public Monster(String name, double location, String description, int health, int damage, String items){
         this.name=name;
         this.location=location;
         this.description=description;
         this.health=health;
         this.damage=damage;
+        this.items=items;
     }
+
+    public Monster() {
+    }
+
     public String getName() {
         return name;
     }
@@ -25,7 +31,7 @@ public class Monster {
         this.name = name;
     }
 
-    public int getLocation() {
+    public double getLocation() {
         return location;
     }
 
@@ -57,5 +63,11 @@ public class Monster {
         this.damage = damage;
     }
 
+    public String getItems() {
+        return items;
+    }
+    public void setItems(String items) {
+        this.items = items;
+    }
 
 }
