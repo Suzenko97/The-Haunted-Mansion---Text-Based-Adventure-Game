@@ -17,7 +17,6 @@ public class Model {
         double[] tmpArr = currentRoom.getDirections();
         StringBuilder dirList = new StringBuilder();
         for (int i = 0; i < 4; i++) {
-            //go get the room name for the corresponding direction, add to the string with new line after
             if (tmpArr[i] == 0) {
                 dirList.append("Dead End\n");
             } else {
@@ -36,24 +35,28 @@ public class Model {
             case "north":
                 if (directionOptions[0] != (double) 0) {
                     currentRoom = map.get(directionOptions[0]);
+                    p1.setLocation(currentRoom.getRoomNumber());
                     success = true;
                 }
                 break;
             case "south":
                 if (directionOptions[1] != (double) 0) {
                     currentRoom = map.get(directionOptions[1]);
+                    p1.setLocation(currentRoom.getRoomNumber());
                     success = true;
                 }
                 break;
             case "east":
                 if (directionOptions[2] != (double) 0) {
                     currentRoom = map.get(directionOptions[2]);
+                    p1.setLocation(currentRoom.getRoomNumber());
                     success = true;
                 }
                 break;
             case "west":
                 if (directionOptions[3] != (double) 0) {
                     currentRoom = map.get(directionOptions[3]);
+                    p1.setLocation(currentRoom.getRoomNumber());
                     success = true;
                 }
                 break;
@@ -99,6 +102,7 @@ public class Model {
         }
         inputFile.close();
 
+        ////monster setup [KELVIN]////
         fileName = "monster_data.txt";
         theFile = new File(fileName);
         inputFile = new Scanner(theFile);
@@ -119,16 +123,17 @@ public class Model {
         currentRoom = map.get(p1.getLocation());
     }
 
-    /*[NAJEE]*/
+    ////[NAJEE]/////
     public static void quitGame() {
         System.exit(0);
     }
 
+    ////[KELVIN]////
     public static void  inspectMonster() {
-        String monsterStatus="";
+        String monsterStatus = "";
         for (int i = 0; i < Monster.monsterList.size(); i++) {
-            System.out.println(p1.getLocation());
-            System.out.println(Monster.monsterList.get(i).getLocation());
+//            System.out.println(p1.getLocation());
+//            System.out.println(Monster.monsterList.get(i).getLocation());
             if (p1.getLocation() == Monster.monsterList.get(i).getLocation()) {
                  monsterStatus = Monster.monsterList.get(i).getName() + "\n"
                         + Monster.monsterList.get(i).getDescription();
@@ -140,6 +145,7 @@ public class Model {
          ConsoleView.monsterInspectMessage(monsterStatus);
     }
 
+    ////[KELVIN]////
     public void startCombat() {
         for (int i = 0; i <=Monster.monsterList.size();i++){
             if (p1.getLocation() == Monster.monsterList.get(i).getLocation()) {

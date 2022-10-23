@@ -12,7 +12,7 @@ public class Player {
         return location;
     }
 
-    public void setLocation(int location) {
+    public void setLocation(double location) {
         this.location = location;
     }
 }

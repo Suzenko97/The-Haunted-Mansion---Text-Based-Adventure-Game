@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="394c847a-35f1-4a4d-9f40-8549be3b2435" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monster_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/monster_data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/ConsoleView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/ConsoleView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,13 +34,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "settings.editor.selected.configurable": "inlay.hints"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Controller" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Controller" />
+      <module name="Cobra-Fall2022" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Controller" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

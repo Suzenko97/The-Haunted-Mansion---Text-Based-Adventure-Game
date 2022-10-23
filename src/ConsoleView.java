@@ -3,6 +3,7 @@ public class ConsoleView {
     public static void introMessage(){
         System.out.println("Welcome to the Haunted Mansion game! Have fun!\n");
     }
+
     public static void navRequest (){
         System.out.println("Which direction would you like to go or do you want to exit?");
     }
@@ -24,7 +25,7 @@ public class ConsoleView {
         System.out.println("Thank you for playing!");
     }
 
-    public static void startCombatMessage(String monsterName){System.out.println("Would you like to begin combat? "+monsterName);}
+    public static void startCombatMessage(String monsterName){System.out.println("Would you like to begin combat? " + monsterName);}
 
-    public static void monsterInspectMessage(String monsterInspect){System.out.println("Monster Info: "+monsterInspect);}
+    public static void monsterInspectMessage(String monsterInspect){System.out.println("Monster Info: " + monsterInspect);}
 }
