@@ -9,7 +9,7 @@ Frankenstein
 A creepy monster with translucent yellow skin, gleaming eyes, flowing black hair, black lips, and prominent white teeth.
 1200
 800
-Rage Up, Armor
+Rage Up
 Werewolve
 24.0
 A werewolf is a person who turns into a werewolf at night and eats people or any other living things, but returns to human form during the day. Werewolves are melee monsters, and they are very fast.

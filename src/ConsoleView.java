@@ -28,4 +28,18 @@ public class ConsoleView {
     public static void startCombatMessage(String monsterName){System.out.println("Would you like to begin combat? " + monsterName);}
 
     public static void monsterInspectMessage(String monsterInspect){System.out.println("Monster Info: " + monsterInspect);}
+
+    public static void inCombatMessage(){
+        System.out.println("You are currently in combat, what would you like to do?( Attack , Block, Run , Dodge)");
+    }
+    public static void monsterInRoomMessage(){
+        System.out.println("There is currently a monster in this room, defeat it before you can explore!");
+    }
+    public static void noMonsterInRoomMessage(){
+        System.out.println("There are no monsters in this room. Explore as you wish!");
+    }
+    public static void invalidCombatOption(){
+        System.out.println("Invalid combat option!");
+    }
+    public static void playerEscapeCombat(String monster){System.out.println("You ran from " + monster);}
 }

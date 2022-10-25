@@ -9,8 +9,8 @@ public class Controller {
         boolean play = true;
         String input;
         ConsoleView.introMessage();
-        ConsoleView.showRoom(Model.getRoom());
         while (play){
+            ConsoleView.showRoom(Model.getRoom());
             ConsoleView.directionList(Model.getDirectionList());
             ConsoleView.navRequest();
             input = userInput.nextLine();
@@ -27,6 +27,9 @@ public class Controller {
             }
             else if(input.contains("inspect monster")){
                 Model.inspectMonster();
+            }
+            else if (input.contains("attack monster")){
+                Model.startCombat();
             }
             else if (input.contains("exit")){
                 play = false;
