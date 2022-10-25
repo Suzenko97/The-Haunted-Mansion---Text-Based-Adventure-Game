@@ -1,12 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Model {
     static HashMap<Double, Room> map;
     static Player p1 = new Player(1);
-    static Room currentRoom;
+    public static Room currentRoom;
 
     public static StringBuilder getRoom(){
         return currentRoom.getDesc();
@@ -65,6 +66,7 @@ public class Model {
         File theFile;
         Scanner inputFile;
         HashMap<Double, Room> tmpMap = new HashMap<>();
+        HashMap<Room, LinkedList<Item>> itemMap = new HashMap<>();
 
         //////Room setup [NAJEE]/////
         fileName = "room_data.txt";
@@ -77,6 +79,7 @@ public class Model {
 
             Room tmpRoom = new Room(number, name, desc);
             tmpMap.put(tmpRoom.getRoomNumber(), tmpRoom);
+            itemMap.put(tmpRoom, new LinkedList<Item>());
         }
         inputFile.close();
 
@@ -97,8 +100,57 @@ public class Model {
         }
         inputFile.close();
 
+        ///// item setup [HOLLY] /////
+        fileName = "item_data.txt";
+        theFile = new File(fileName);
+        inputFile = new Scanner(theFile);
+
+        while(inputFile.hasNextLine()){
+            // Read item name, description, and room number
+            String itemName = inputFile.nextLine();
+            String itemDescription = inputFile.nextLine();
+            Double roomNumber = Double.parseDouble(inputFile.nextLine());
+            Room itemRoom = tmpMap.get(roomNumber);
+            // Create item
+            Item item = new Item(itemName, itemDescription);
+            // add Item to room
+            itemRoom.addItem(item);
+
+        }
+        inputFile.close();
+
+        ///// weapon item setup [HOLLY] /////
+        fileName = "weapon_data.txt";
+        theFile = new File(fileName);
+        inputFile = new Scanner(theFile);
+
+        while(inputFile.hasNextLine()){
+            // Read item name, description, and room number
+            String itemName = inputFile.nextLine();
+            String itemDescription = inputFile.nextLine();
+            int strengthPoints = Integer.parseInt(inputFile.nextLine());
+            Double roomNumber = Double.parseDouble(inputFile.nextLine());
+            Room itemRoom = tmpMap.get(roomNumber);
+            // Create item
+            Item item = new Weapon(itemName, itemDescription,strengthPoints);
+            // add Item to room
+            itemRoom.addItem(item);
+            System.out.println(itemRoom.inspectRoom());
+        }
+        inputFile.close();
+
+
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
+    }
+
+    public static void addToInventory(String itemName){
+        LinkedList<Item> currentRoomInventory = currentRoom.getRoomInventory();
+        for(Item item : currentRoomInventory){
+            if(item.itemName.equals(itemName)){
+                p1.addToInventory(item);
+            }
+        }
     }
 
     /*[NAJEE]*/public static void quitGame(){

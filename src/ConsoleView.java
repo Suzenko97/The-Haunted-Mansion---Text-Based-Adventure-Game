@@ -23,4 +23,5 @@ public class ConsoleView {
     public static void quitMessage(){
         System.out.println("Thank you for playing!");
     }
+
 }

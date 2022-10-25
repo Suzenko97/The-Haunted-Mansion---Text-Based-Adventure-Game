@@ -1,0 +1,16 @@
+Wooden Stake
+A foot long steak.
+200
+4.0
+Holy Water
+Holy water in a jar.
+300
+4.0
+Banish Spell
+A magic spell used to banish dark creatures.
+300
+9.0
+Electromagnetic Launcher
+A weapon that produces electricity.
+750
+17.0

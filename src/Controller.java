@@ -25,6 +25,9 @@ public class Controller {
                         ConsoleView.navDenial();
                     }
             }
+            else if (input.contains("pick up")){
+                String itemName = input.replaceAll("pick up ", "");
+            }
             else if (input.contains("exit")){
                 play = false;
             }
