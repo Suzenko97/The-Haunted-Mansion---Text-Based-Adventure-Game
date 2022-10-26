@@ -129,11 +129,9 @@ public class Model {
     }
 
     ////[KELVIN]////
-    public static void  inspectMonster() {
+    public static String inspectMonster() {
         String monsterStatus = "";
         for (int i = 0; i < Monster.monsterList.size(); i++) {
-//            System.out.println(p1.getLocation());
-//            System.out.println(Monster.monsterList.get(i).getLocation());
             if (p1.getLocation() == Monster.monsterList.get(i).getLocation()) {
                  monsterStatus = Monster.monsterList.get(i).getName() + "\n"
                         + Monster.monsterList.get(i).getDescription();
@@ -142,7 +140,7 @@ public class Model {
                 monsterStatus= "No monster in the room";
             }
         }
-         ConsoleView.monsterInspectMessage(monsterStatus);
+        return monsterStatus;
     }
 
     ////[KELVIN]////

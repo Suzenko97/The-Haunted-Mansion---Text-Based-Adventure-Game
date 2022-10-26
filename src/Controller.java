@@ -26,7 +26,7 @@ public class Controller {
                     }
             }
             else if(input.contains("inspect monster")){
-                Model.inspectMonster();
+                ConsoleView.printMonsterDesc(Model.inspectMonster());
             }
             else if (input.contains("attack monster")){
                 Model.startCombat();

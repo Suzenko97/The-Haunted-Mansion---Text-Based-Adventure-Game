@@ -41,5 +41,10 @@ public class ConsoleView {
     public static void invalidCombatOption(){
         System.out.println("Invalid combat option!");
     }
+
     public static void playerEscapeCombat(String monster){System.out.println("You ran from " + monster);}
+
+    public static void printMonsterDesc(String desc){
+        System.out.println(desc);
+    }
 }
