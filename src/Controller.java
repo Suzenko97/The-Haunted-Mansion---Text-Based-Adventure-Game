@@ -39,6 +39,12 @@ public class Controller {
             else if(input.contains("inspect room")){
                 System.out.println(Model.currentRoom.inspectRoom());
             }
+            // [HOLLY] -> Inspect Item Command
+            else if(input.contains("inspect ")){
+                String itemName = input.replaceAll("inspect ", "");
+                Model.inspectItem(itemName);
+
+            }
             // [HOLLY] -> Check Inventory Command
             else if(input.contains("check inventory")){
                 Model.checkInventory();

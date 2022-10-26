@@ -1,16 +1,16 @@
 Wooden Stake
-A foot long steak.
+A foot long steak. Valued at 200 Strength Points.
 200
 4.0
 Holy Water
-Holy water in a jar.
+Holy water in a jar. Valued at 300 Strength Points.
 300
 4.0
 Banish Spell
-A magic spell used to banish dark creatures.
+A magic spell used to banish dark creatures. Valued at 300 Strength Points.
 300
 9.0
 Electromagnetic Launcher
-A weapon that produces electricity.
+A weapon that produces electricity. Valued at 750 Strength Points.
 750
 17.0

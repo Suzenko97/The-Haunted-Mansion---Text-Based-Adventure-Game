@@ -13,6 +13,10 @@ public class ConsoleView {
         System.out.println(inventory.toString());
     }
 
+    public static void showItemDesc (String itemDesc){
+        System.out.println(itemDesc);
+    }
+
     public static void directionList(StringBuilder list){
         System.out.println("These are the rooms to the North, South, East, and West:");
         System.out.println(list);

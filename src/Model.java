@@ -143,7 +143,7 @@ public class Model {
     }
     // [HOLLY] -> Check Player Inventory
     public static void checkInventory() {
-        System.out.println(p1.getPlayerInventory());
+        ConsoleView.showInventory(p1.getPlayerInventory());
     }
 
     //[HOLLY] -> Pick up Item
@@ -171,5 +171,16 @@ public class Model {
         System.exit(0);
     }
 
+    // [HOLLY] -> Inspect Item
+    public static void inspectItem(String itemName) {
+        // if item is inventory, inspect it (show item description)
+        for(Item item : p1.getPlayerInventory()){
+            // Drop item from inventory if it is present is player inventory
+            if(item.itemName.equalsIgnoreCase(itemName)){
+                System.out.println("test");
+                ConsoleView.showItemDesc(item.inspect());
+            }
+        }
 
+    }
 }
