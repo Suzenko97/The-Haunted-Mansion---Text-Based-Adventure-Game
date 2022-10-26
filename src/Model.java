@@ -115,8 +115,6 @@ public class Model {
             Item item = new Item(itemName, itemDescription);
             // add Item to room
             itemRoom.addItem(item);
-            System.out.println("(Items) Inspect Room for " + itemRoom.inspectRoom());
-
         }
         inputFile.close();
 
@@ -136,7 +134,6 @@ public class Model {
             Item item = new Weapon(itemName, itemDescription,strengthPoints);
             // add Item to room
             itemRoom.addItem(item);
-            System.out.println("(Weapons) Inspect Room for " + itemRoom.inspectRoom());
         }
         inputFile.close();
 
@@ -144,36 +141,30 @@ public class Model {
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
     }
-
+    // [HOLLY] -> Check Player Inventory
+    public static void checkInventory() {
+        System.out.println(p1.getPlayerInventory());
+    }
 
     //[HOLLY] -> Pick up Item
      public static void pickUpItem(String itemName){
-        boolean validPickUp = false;
         for(Item item : currentRoom.getRoomInventory()){
+            System.out.println(itemName);
             // Add item to inventory if it is present is room
             if(item.itemName.equalsIgnoreCase(itemName)){
                 p1.addToInventory(item);
                 currentRoom.removeItem(item);
-                validPickUp = true;
             }
         }
-        if(!validPickUp){
-            System.out.println("Item not in room");
-        }
     }
-    //[HOLLY] -> Pick up Item
+    //[HOLLY] -> Drop Item
     public static void dropItem(String itemName) {
-        boolean validDrop = false;
         for(Item item : p1.getPlayerInventory()){
             // Drop item from inventory if it is present is player inventory
             if(item.itemName.equalsIgnoreCase(itemName)){
                 p1.removeFromInventory(item);
                 currentRoom.addItem(item);
-                validDrop = true;
             }
-        }
-        if(!validDrop){
-            System.out.println("Item not in inventory");
         }
     }
 

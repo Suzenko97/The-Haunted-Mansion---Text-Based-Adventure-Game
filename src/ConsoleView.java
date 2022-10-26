@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class ConsoleView {
 
     public static void introMessage(){
@@ -5,6 +7,10 @@ public class ConsoleView {
     }
     public static void navRequest (){
         System.out.println("Which direction would you like to go or do you want to exit?");
+    }
+
+    public static void showInventory (LinkedList<Item> inventory){
+        System.out.println(inventory.toString());
     }
 
     public static void directionList(StringBuilder list){

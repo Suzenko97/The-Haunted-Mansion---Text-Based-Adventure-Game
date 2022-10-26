@@ -26,7 +26,7 @@ public class Controller {
                     }
             }
             //[HOLLY] ->  Pick Up Command
-            else if (input.contains("pick up")){
+            else if (input.contains("pick ")){
                 String itemName = input.replaceAll("pick ", "");
                 Model.pickUpItem(itemName);
             }
@@ -38,6 +38,10 @@ public class Controller {
             // [HOLLY] -> Inspect Room Command (NOT REQUIRED IN SRS) being used for testing purposes
             else if(input.contains("inspect room")){
                 System.out.println(Model.currentRoom.inspectRoom());
+            }
+            // [HOLLY] -> Check Inventory Command
+            else if(input.contains("check inventory")){
+                Model.checkInventory();
             }
             else if (input.contains("exit")){
                 play = false;
