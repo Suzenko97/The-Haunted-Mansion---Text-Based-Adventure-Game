@@ -27,7 +27,7 @@ public class Controller {
             }
             //[HOLLY] ->  Pick Up Command
             else if (input.contains("pick up")){
-                String itemName = input.replaceAll("pick up ", "");
+                String itemName = input.replaceAll("pick ", "");
                 Model.pickUpItem(itemName);
             }
             //[HOLLY] ->  Drop Command
