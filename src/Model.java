@@ -149,7 +149,6 @@ public class Model {
     //[HOLLY] -> Pick up Item
      public static void pickUpItem(String itemName){
         for(Item item : currentRoom.getRoomInventory()){
-            System.out.println(itemName);
             // Add item to inventory if it is present is room
             if(item.itemName.equalsIgnoreCase(itemName)){
                 p1.addToInventory(item);
