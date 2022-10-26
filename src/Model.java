@@ -115,6 +115,7 @@ public class Model {
             Item item = new Item(itemName, itemDescription);
             // add Item to room
             itemRoom.addItem(item);
+            System.out.println("(Items) Inspect Room for " + itemRoom.inspectRoom());
 
         }
         inputFile.close();
@@ -135,7 +136,7 @@ public class Model {
             Item item = new Weapon(itemName, itemDescription,strengthPoints);
             // add Item to room
             itemRoom.addItem(item);
-            System.out.println(itemRoom.inspectRoom());
+            System.out.println("(Weapons) Inspect Room for " + itemRoom.inspectRoom());
         }
         inputFile.close();
 
@@ -144,16 +145,41 @@ public class Model {
         currentRoom = map.get(p1.getLocation());
     }
 
-    public static void addToInventory(String itemName){
-        LinkedList<Item> currentRoomInventory = currentRoom.getRoomInventory();
-        for(Item item : currentRoomInventory){
-            if(item.itemName.equals(itemName)){
+
+    //[HOLLY] -> Pick up Item
+     public static void pickUpItem(String itemName){
+        boolean validPickUp = false;
+        for(Item item : currentRoom.getRoomInventory()){
+            // Add item to inventory if it is present is room
+            if(item.itemName.equalsIgnoreCase(itemName)){
                 p1.addToInventory(item);
+                currentRoom.removeItem(item);
+                validPickUp = true;
             }
+        }
+        if(!validPickUp){
+            System.out.println("Item not in room");
+        }
+    }
+    //[HOLLY] -> Pick up Item
+    public static void dropItem(String itemName) {
+        boolean validDrop = false;
+        for(Item item : p1.getPlayerInventory()){
+            // Drop item from inventory if it is present is player inventory
+            if(item.itemName.equalsIgnoreCase(itemName)){
+                p1.removeFromInventory(item);
+                currentRoom.addItem(item);
+                validDrop = true;
+            }
+        }
+        if(!validDrop){
+            System.out.println("Item not in inventory");
         }
     }
 
     /*[NAJEE]*/public static void quitGame(){
         System.exit(0);
     }
+
+
 }

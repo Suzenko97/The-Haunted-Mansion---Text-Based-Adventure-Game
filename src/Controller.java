@@ -25,8 +25,19 @@ public class Controller {
                         ConsoleView.navDenial();
                     }
             }
+            //[HOLLY] ->  Pick Up Command
             else if (input.contains("pick up")){
                 String itemName = input.replaceAll("pick up ", "");
+                Model.pickUpItem(itemName);
+            }
+            //[HOLLY] ->  Drop Command
+            else if (input.contains("drop ")){
+                String itemName = input.replaceAll("drop ", "");
+                Model.dropItem(itemName);
+            }
+            // [HOLLY] -> Inspect Room Command (NOT REQUIRED IN SRS) being used for testing purposes
+            else if(input.contains("inspect room")){
+                System.out.println(Model.currentRoom.inspectRoom());
             }
             else if (input.contains("exit")){
                 play = false;

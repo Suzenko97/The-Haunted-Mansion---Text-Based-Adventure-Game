@@ -19,10 +19,17 @@ public class Player {
         this.location = location;
     }
 
+
     public void addToInventory(Item item){
         inventory.add(item);
-        System.out.println(item.itemName + " has been added to your inventory");
+    }
+
+    public LinkedList<Item> getPlayerInventory(){
+        return this.inventory;
     }
 
 
+    public void removeFromInventory(Item item) {
+        inventory.remove(item);
+    }
 }

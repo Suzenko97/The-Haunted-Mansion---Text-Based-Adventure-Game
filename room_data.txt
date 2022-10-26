@@ -1,6 +1,6 @@
 Attic
 1
-Dusty attic with one trap door that leads into the mansion.
+Dusty attic with one trap door that leads into the mansion. A table that contains a backpack, flashlight, and a map.
 Hallway 1
 2.1
 You are in a hallway.
