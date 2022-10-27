@@ -45,6 +45,6 @@ public class ConsoleView {
     public static void playerEscapeCombat(String monster){System.out.println("You ran from " + monster);}
 
     public static void printMonsterDesc(String desc){
-        System.out.println(desc);
+        System.out.println(desc + "\n");
     }
 }

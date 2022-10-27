@@ -130,17 +130,17 @@ public class Model {
 
     ////[KELVIN]////
     public static String inspectMonster() {
-        String monsterStatus = "";
+        String monsterDesc = "";
         for (int i = 0; i < Monster.monsterList.size(); i++) {
-            if (p1.getLocation() == Monster.monsterList.get(i).getLocation()) {
-                 monsterStatus = Monster.monsterList.get(i).getName() + "\n"
+            if (currentRoom.getRoomNumber() == Monster.monsterList.get(i).getLocation()) {
+                 monsterDesc = Monster.monsterList.get(i).getName() + "\n"
                         + Monster.monsterList.get(i).getDescription();
                  i=10;
             } else {
-                monsterStatus= "No monster in the room";
+                monsterDesc= "No monster in the room";
             }
         }
-        return monsterStatus;
+        return monsterDesc;
     }
 
     ////[KELVIN]////
@@ -169,7 +169,7 @@ public class Model {
                             combatChoiceString=combatChoice.nextLine();
                             if (combatChoiceString.toLowerCase().contains("attack")) {
                                 monsterHP=Monster.monsterList.get(i).getHealth()-p1.getStrength();
-                                System.out.println("Vampire hits you for "+Monster.monsterList.get(i).getDamage()+" HP");
+                                System.out.println(Monster.monsterList.get(i).getName() + " hits you for "+Monster.monsterList.get(i).getDamage()+" HP");
                                 playerHP=playerHP-Monster.monsterList.get(i).getDamage();
                                 p1.setHealth(playerHP);
                                 Monster.monsterList.get(i).setHealth(monsterHP);
@@ -199,7 +199,7 @@ public class Model {
                             } else {
                                 ConsoleView.invalidCombatOption();
                             }
-                            System.out.println("Monster current health: "+ Monster.monsterList.get(i).getHealth());
+                            System.out.println("\nMonster current health: "+ Monster.monsterList.get(i).getHealth());
                             System.out.println("Your current health: "+p1.getHealth());
                         }
                     }

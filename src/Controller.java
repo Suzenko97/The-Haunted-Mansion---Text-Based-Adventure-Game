@@ -9,8 +9,8 @@ public class Controller {
         boolean play = true;
         String input;
         ConsoleView.introMessage();
+        ConsoleView.showRoom(Model.getRoom());
         while (play){
-            ConsoleView.showRoom(Model.getRoom());
             ConsoleView.directionList(Model.getDirectionList());
             ConsoleView.navRequest();
             input = userInput.nextLine();
