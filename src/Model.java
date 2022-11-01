@@ -31,6 +31,7 @@ public class Model {
     public static boolean movePlayer(String direction) {
         double[] directionOptions = currentRoom.getDirections();
         boolean success = false;
+
         switch (direction.toLowerCase()) {
             case "north":
                 if (directionOptions[0] != (double) 0) {
@@ -199,6 +200,10 @@ public class Model {
                             } else {
                                 ConsoleView.invalidCombatOption();
                             }
+                            if (p1.getHealth()==0){
+                                Model.gameOver(Monster.monsterList.get(i).getName());
+
+                            }
                             System.out.println("\nMonster current health: "+ Monster.monsterList.get(i).getHealth());
                             System.out.println("Your current health: "+p1.getHealth());
                         }
@@ -212,7 +217,23 @@ public class Model {
         if (hasMonster==false){
             Monster.monsterList.remove(monsterToRemove);
             ConsoleView.noMonsterInRoomMessage();
+            String retryString="";
+            Scanner retryChoice=new Scanner(System.in);
+
+            retryString=retryChoice.nextLine();
+
+            if (retryString.toLowerCase().contains("yes")){
+                ConsoleView.gameRestartedFromCheckpoint();
+                currentRoom=map.get(p1.getLastVisited());
+                p1.setHealth(4500);
+            } else if (retryString.toLowerCase().contains("no")) {
+                ConsoleView.thankYouForPlaying();
+            }
         }
+    }
+
+    public static void gameOver( String monsterName){
+        ConsoleView.gameOverMessage(monsterName);
     }
 
 }
