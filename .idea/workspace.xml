@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="394c847a-35f1-4a4d-9f40-8549be3b2435" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cobra-Fall2022-kelvin.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cobra-Fall2022-kelvin1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KelvinsBranch.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/ConsoleView.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/Controller.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/Model.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/Monster.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/Player.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/README.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022-kelvin/Room.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Monster.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Monster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/monster_data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/monster_data.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/ConsoleView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/ConsoleView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

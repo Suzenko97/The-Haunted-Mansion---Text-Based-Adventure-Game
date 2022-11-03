@@ -14,14 +14,7 @@ public class Model {
         return currentRoom.getDesc();
     }
 
-    /*[NAJEE]*/public static StringBuilder getDirectionList(){
-
-    public static StringBuilder getRoom() {
-        return currentRoom.getDesc();
-    }
-
-    public static StringBuilder getDirectionList() {
-
+    /*[NAJEE]*/public static StringBuilder getDirectionList() throws FileNotFoundException {
         double[] tmpArr = currentRoom.getDirections();
         StringBuilder dirList = new StringBuilder();
         for (int i = 0; i < 4; i++) {
