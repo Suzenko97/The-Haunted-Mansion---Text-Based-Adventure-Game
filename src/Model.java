@@ -28,6 +28,17 @@ public class Model {
         return dirList;
     }
 
+    public static boolean checkForMonster(){
+        boolean hasMonster = false;
+        for (Monster m : Monster.monsterList){
+            if (currentRoom.getRoomNumber() == m.getLocation()) {
+                hasMonster = true;
+                break;
+            }
+        }
+        return hasMonster;
+    }
+
     /*[NAJEE]*/
     public static boolean movePlayer(String direction) {
         double[] directionOptions = currentRoom.getDirections();

@@ -47,4 +47,8 @@ public class ConsoleView {
     public static void printMonsterDesc(String desc){
         System.out.println(desc + "\n");
     }
+
+    public static void printMonsterDenial(){
+        System.out.println("Cannot proceed, monster is in this room. You will not be able to leave unless you fight.\nAttack monster to start combat.");
+    }
 }

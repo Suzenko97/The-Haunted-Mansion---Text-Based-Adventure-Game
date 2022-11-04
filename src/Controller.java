@@ -17,13 +17,18 @@ public class Controller {
             input = input.toLowerCase();
             if (input.contains("enter room")){
                 String tmp = input.substring(11);
-                boolean success = Model.movePlayer(tmp);
+                if (!(Model.checkForMonster())){
+                    boolean success = Model.movePlayer(tmp);
                     if (success){
                         ConsoleView.showRoom(Model.getRoom());
                     }
                     else{
                         ConsoleView.navDenial();
                     }
+                }
+                else {
+                    ConsoleView.printMonsterDenial();
+                }
             }
             else if(input.contains("inspect monster")){
                 ConsoleView.printMonsterDesc(Model.inspectMonster());
