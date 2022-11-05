@@ -5,4 +5,6 @@ public class Weapon extends Item{
         super(itemName, itemDescription);
         this.strengthPoints = strengthPoints;
     }
+
+    public void pickup(Room currentRoom){ currentRoom.addItem(this);}
 }

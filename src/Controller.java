@@ -35,6 +35,12 @@ public class Controller {
                 String itemName = input.replaceAll("drop ", "");
                 Model.dropItem(itemName);
             }
+            // [HOLLY] -> Unequip Item Command
+            else if(input.contains("unequip ")){
+                System.out.println("unequip detected");
+                String itemName = input.replaceAll("unequip ", "");
+                Model.unequipItem(itemName);
+            }
             // [HOLLY] -> Inspect Room Command (NOT REQUIRED IN SRS) being used for testing purposes
             else if(input.contains("inspect room")){
                 System.out.println(Model.currentRoom.inspectRoom());
@@ -43,7 +49,11 @@ public class Controller {
             else if(input.contains("inspect ")){
                 String itemName = input.replaceAll("inspect ", "");
                 Model.inspectItem(itemName);
-
+            }
+            // [HOLLY] -> Equip Item Command
+            else if(input.contains("equip ")){
+                String itemName = input.replaceAll("equip ", "");
+                Model.equipItem(itemName);
             }
             // [HOLLY] -> Check Inventory Command
             else if(input.contains("check inventory")){

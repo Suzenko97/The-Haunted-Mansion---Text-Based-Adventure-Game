@@ -10,7 +10,6 @@ public class Item {
     public Item(String itemName, String itemDescription) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
-
     }
 
     public String getItemName() {
@@ -22,9 +21,6 @@ public class Item {
     public String inspect() {
         return itemDescription;
     }
-
-    public void pickup(Room currentRoom){ currentRoom.addItem(this);}
-    public void drop(Room currentRoom){ currentRoom.removeItem(this);}
 
 
 }

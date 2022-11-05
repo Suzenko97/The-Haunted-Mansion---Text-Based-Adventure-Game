@@ -5,23 +5,22 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Model {
+    public static Room currentRoom;
     static HashMap<Double, Room> map;
     static Player p1 = new Player(1);
-    public static Room currentRoom;
 
-    public static StringBuilder getRoom(){
+    public static StringBuilder getRoom() {
         return currentRoom.getDesc();
     }
 
-    public static StringBuilder getDirectionList(){
+    public static StringBuilder getDirectionList() {
         double[] tmpArr = currentRoom.getDirections();
         StringBuilder dirList = new StringBuilder();
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             //go get the room name for the corresponding direction, add to the string with new line after
-            if (tmpArr[i] == 0){
+            if (tmpArr[i] == 0) {
                 dirList.append("Dead End\n");
-            }
-            else{
+            } else {
                 dirList.append(map.get(tmpArr[i]).getRoomName());
                 dirList.append("\n");
             }
@@ -29,30 +28,31 @@ public class Model {
         return dirList;
     }
 
-    /*[NAJEE]*/public static boolean movePlayer(String direction){
+    /*[NAJEE]*/
+    public static boolean movePlayer(String direction) {
         double[] directionOptions = currentRoom.getDirections();
         boolean success = false;
         switch (direction.toLowerCase()) {
             case "north":
-                if (directionOptions[0] != (double)0) {
+                if (directionOptions[0] != (double) 0) {
                     currentRoom = map.get(directionOptions[0]);
                     success = true;
                 }
                 break;
             case "south":
-                if (directionOptions[1] != (double)0) {
+                if (directionOptions[1] != (double) 0) {
                     currentRoom = map.get(directionOptions[1]);
                     success = true;
                 }
                 break;
             case "east":
-                if (directionOptions[2] != (double)0) {
+                if (directionOptions[2] != (double) 0) {
                     currentRoom = map.get(directionOptions[2]);
                     success = true;
                 }
                 break;
             case "west":
-                if (directionOptions[3] != (double)0) {
+                if (directionOptions[3] != (double) 0) {
                     currentRoom = map.get(directionOptions[3]);
                     success = true;
                 }
@@ -61,12 +61,12 @@ public class Model {
         return success;
     }
 
-    /*[All]*/public static void setup() throws FileNotFoundException {
+    /*[All]*/
+    public static void setup() throws FileNotFoundException {
         String fileName;
         File theFile;
         Scanner inputFile;
         HashMap<Double, Room> tmpMap = new HashMap<>();
-        HashMap<Room, LinkedList<Item>> itemMap = new HashMap<>();
 
         //////Room setup [NAJEE]/////
         fileName = "room_data.txt";
@@ -79,7 +79,6 @@ public class Model {
 
             Room tmpRoom = new Room(number, name, desc);
             tmpMap.put(tmpRoom.getRoomNumber(), tmpRoom);
-            itemMap.put(tmpRoom, new LinkedList<Item>());
         }
         inputFile.close();
 
@@ -105,7 +104,7 @@ public class Model {
         theFile = new File(fileName);
         inputFile = new Scanner(theFile);
 
-        while(inputFile.hasNextLine()){
+        while (inputFile.hasNextLine()) {
             // Read item name, description, and room number
             String itemName = inputFile.nextLine();
             String itemDescription = inputFile.nextLine();
@@ -123,7 +122,7 @@ public class Model {
         theFile = new File(fileName);
         inputFile = new Scanner(theFile);
 
-        while(inputFile.hasNextLine()){
+        while (inputFile.hasNextLine()) {
             // Read item name, description, and room number
             String itemName = inputFile.nextLine();
             String itemDescription = inputFile.nextLine();
@@ -131,7 +130,7 @@ public class Model {
             Double roomNumber = Double.parseDouble(inputFile.nextLine());
             Room itemRoom = tmpMap.get(roomNumber);
             // Create item
-            Item item = new Weapon(itemName, itemDescription,strengthPoints);
+            Item item = new Weapon(itemName, itemDescription, strengthPoints);
             // add Item to room
             itemRoom.addItem(item);
         }
@@ -141,43 +140,91 @@ public class Model {
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
     }
+
     // [HOLLY] -> Check Player Inventory
     public static void checkInventory() {
         ConsoleView.showInventory(p1.getPlayerInventory());
     }
 
-    //[HOLLY] -> Pick up Item
-     public static void pickUpItem(String itemName){
-        for(Item item : currentRoom.getRoomInventory()){
-            // Add item to inventory if it is present is room
-            if(item.itemName.equalsIgnoreCase(itemName)){
+    //[HOLLY] -> Pick up Item - >  Add item to inventory
+    public static void pickUpItem(String itemName) {
+        for (Item item : currentRoom.getRoomInventory()) {
+            if (item.itemName.equalsIgnoreCase(itemName)) {
                 p1.addToInventory(item);
+                // remove item from room
                 currentRoom.removeItem(item);
             }
         }
     }
-    //[HOLLY] -> Drop Item
+
+    //[HOLLY] -> Drop Item -> drops item from inventory
     public static void dropItem(String itemName) {
-        for(Item item : p1.getPlayerInventory()){
-            // Drop item from inventory if it is present is player inventory
-            if(item.itemName.equalsIgnoreCase(itemName)){
-                p1.removeFromInventory(item);
-                currentRoom.addItem(item);
+        for (Item item : p1.getPlayerInventory()) {
+            //if item in inventory
+            if (item.itemName.equalsIgnoreCase(itemName)) {
+                // and item not equipped -> drop item
+                if (!p1.getEquippedItems().contains(item.itemName.toUpperCase())) {
+                    p1.removeFromInventory(item);
+                    // add item to room
+                    currentRoom.addItem(item);
+                } else {
+                    ConsoleView.showErrorMessage("You must unequip an item before dropping it");
+                }
             }
         }
     }
 
-    /*[NAJEE]*/public static void quitGame(){
+    //[HOLLY] Equip Item -> Equips an inventory item
+    public static void equipItem(String itemName) {
+        boolean inInventory = false;
+        for (Item item : p1.getPlayerInventory()) {
+            // if item in inventory -> equip
+            if (item.itemName.equalsIgnoreCase(itemName)) {
+                inInventory = true;
+                p1.addToEquipped(item.itemName.toUpperCase());
+                // if item is weapon, increase strength points
+                boolean isWeapon = item instanceof Weapon;
+                if (isWeapon) {
+                    p1.setStrength(p1.getStrength() + ((Weapon) item).strengthPoints);
+                    // TEST LINE -> DELETE LATER
+                    System.out.println("Player Strength: " + p1.getStrength());
+                }
+                // TEST LINE -> DELETE LATER
+                System.out.println("Equipped: " + p1.getEquippedItems().toString());
+            }
+        }
+        if (!inInventory) {
+            ConsoleView.showErrorMessage("Item not in inventory");
+        }
+    }
+
+    //[HOLLY] unequipItem -> Unequips an inventory item
+    public static void unequipItem(String itemName) {
+        // checks if item is equipped
+        for (Item item : p1.getPlayerInventory()) {
+            // if item in inventory
+            if (item.itemName.equalsIgnoreCase(itemName)) {
+                p1.removeFromEquipped(item.itemName.toUpperCase());
+                // if item is weapon, remove strength points
+                boolean isWeapon = item instanceof Weapon;
+                if (isWeapon) {
+                    p1.setStrength(p1.getStrength() - ((Weapon) item).strengthPoints);
+                    // TEST LINE -> DELETE LATER
+                    System.out.println("Player Strength: " + p1.getStrength());
+                }
+            }
+        }
+    }
+
+    /*[NAJEE]*/
+    public static void quitGame() {
         System.exit(0);
     }
 
-    // [HOLLY] -> Inspect Item
+    // [HOLLY] -> Inspect Item -> Inspects item if it is inventory
     public static void inspectItem(String itemName) {
-        // if item is inventory, inspect it (show item description)
-        for(Item item : p1.getPlayerInventory()){
-            // Drop item from inventory if it is present is player inventory
-            if(item.itemName.equalsIgnoreCase(itemName)){
-                System.out.println("test");
+        for (Item item : p1.getPlayerInventory()) {
+            if (item.itemName.equalsIgnoreCase(itemName)) {
                 ConsoleView.showItemDesc(item.inspect());
             }
         }

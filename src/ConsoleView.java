@@ -9,13 +9,16 @@ public class ConsoleView {
         System.out.println("Which direction would you like to go or do you want to exit?");
     }
 
+    // [HOLLY] showInventory -> prints out list of items in inventory
     public static void showInventory (LinkedList<Item> inventory){
         System.out.println(inventory.toString());
     }
 
-    public static void showItemDesc (String itemDesc){
-        System.out.println(itemDesc);
-    }
+    // [HOLLY] showItemDescription -> prints out description
+    public static void showItemDesc (String itemDesc){System.out.println(itemDesc);}
+
+    // [HOLLY] showErrorMessage -> prints out description
+    public static void showErrorMessage (String errorMessage){System.out.println(errorMessage);}
 
     public static void directionList(StringBuilder list){
         System.out.println("These are the rooms to the North, South, East, and West:");
