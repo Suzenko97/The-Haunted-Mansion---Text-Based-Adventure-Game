@@ -1,12 +1,17 @@
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Model {
     public static Room currentRoom;
+    public static final String ANSI_PURPLE_BACKGROUND = "\033[0;35m";
+    public static final String ANSI_RESET = "\u001B[0m";
     static HashMap<Double, Room> map;
+    // [HOLLY] TreasureChestMap -> Maps treasure chests to a room
+    //static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
+    static HashMap<TreasureChest, LinkedList<Double>> treasureChestMap = new HashMap<>();
+
     static Player p1 = new Player(1);
 
     public static StringBuilder getRoom() {
@@ -99,7 +104,7 @@ public class Model {
         }
         inputFile.close();
 
-        ///// item setup [HOLLY] /////
+        // [HOLLY] -> Item File Reading
         fileName = "item_data.txt";
         theFile = new File(fileName);
         inputFile = new Scanner(theFile);
@@ -117,7 +122,7 @@ public class Model {
         }
         inputFile.close();
 
-        ///// weapon item setup [HOLLY] /////
+        // [HOLLY] -> Weapon [Item] File Reading
         fileName = "weapon_data.txt";
         theFile = new File(fileName);
         inputFile = new Scanner(theFile);
@@ -136,28 +141,71 @@ public class Model {
         }
         inputFile.close();
 
+        // [HOLLY] -> Treasure Chest File Reading
+        fileName = "treasure_data.txt";
+        theFile = new File(fileName);
+        inputFile = new Scanner(theFile);
+        while (inputFile.hasNextLine()) {
+            String treasureChestName = inputFile.nextLine();
+            //Double roomNumber = Double.parseDouble(inputFile.nextLine());
+            LinkedList<Double> rooms = new LinkedList<Double>();
+
+            String roomsString = inputFile.nextLine();
+            if(roomsString.contains(",")){
+                String[] listOfRooms = roomsString.split(",");
+                for(String room : listOfRooms){
+                    rooms.add(Double.parseDouble(room));
+                }
+            }else{
+                rooms.add(Double.parseDouble(roomsString));
+            }
+
+            LinkedList<PowerUp> powerUps = new LinkedList<>();
+            String readLine = inputFile.nextLine();
+            while(!readLine.equals("----")){
+                String itemName = readLine;
+                String type = itemName;
+                String itemDescription = inputFile.nextLine();
+                Integer points = Integer.parseInt(inputFile.nextLine());
+                PowerUp powerUp = new PowerUp(itemName,itemDescription,type,points);
+                powerUps.add(powerUp);
+                try{
+                    readLine = inputFile.nextLine();
+                }catch (NoSuchElementException e){
+                    // reached end of file
+                }
+            }
+            TreasureChest treasureChest = new TreasureChest(powerUps,treasureChestName);
+            //treasureChestMap.put(roomNumber,treasureChest);
+            treasureChestMap.put(treasureChest, rooms);
+            System.out.println(treasureChest);
+            System.out.println(treasureChestMap.toString());
+        }
+
 
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
     }
 
-    // [HOLLY] -> Check Player Inventory
+    // [HOLLY]  Check Player Inventory
     public static void checkInventory() {
         ConsoleView.showInventory(p1.getPlayerInventory());
     }
 
-    //[HOLLY] -> Pick up Item - >  Add item to inventory
+    //[HOLLY]  Pick up Item - >  Add item to inventory
     public static void pickUpItem(String itemName) {
         for (Item item : currentRoom.getRoomInventory()) {
             if (item.itemName.equalsIgnoreCase(itemName)) {
                 p1.addToInventory(item);
                 // remove item from room
                 currentRoom.removeItem(item);
+
+                System.out.println(ANSI_PURPLE_BACKGROUND + itemName + " has been picked up" + ANSI_RESET);
             }
         }
     }
 
-    //[HOLLY] -> Drop Item -> drops item from inventory
+    //[HOLLY] Drop Item -> drops item from inventory
     public static void dropItem(String itemName) {
         for (Item item : p1.getPlayerInventory()) {
             //if item in inventory

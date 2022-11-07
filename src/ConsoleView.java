@@ -13,6 +13,13 @@ public class ConsoleView {
     public static void showInventory (LinkedList<Item> inventory){
         System.out.println(inventory.toString());
     }
+    // [HOLLY] TreasureMessage -> prints out list of treasure chest items to choose from
+    public static void TreasureMessage (LinkedList<PowerUp> powerUps){
+        System.out.println("Choose a powerup:");
+        for(PowerUp powerUp : powerUps){
+            System.out.println(powerUp);
+        }
+    }
 
     // [HOLLY] showItemDescription -> prints out description
     public static void showItemDesc (String itemDesc){System.out.println(itemDesc);}
