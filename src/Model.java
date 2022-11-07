@@ -4,12 +4,8 @@ import java.util.*;
 
 public class Model {
     public static Room currentRoom;
-    public static final String ANSI_PURPLE = "\033[0;35m";
-    public static final String ANSI_RED = "\033[0;31m";
-    public static final String ANSI_RESET = "\u001B[0m";
     static HashMap<Double, Room> map;
     // [HOLLY] TreasureChestMap -> Maps treasure chests to a room
-    //static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
     static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
 
     static Player p1 = new Player(1);
@@ -128,7 +124,7 @@ public class Model {
         inputFile = new Scanner(theFile);
 
         while (inputFile.hasNextLine()) {
-            // Read item name, description, and room number
+            // Read item name, description, strength points and room number
             String itemName = inputFile.nextLine();
             String itemDescription = inputFile.nextLine();
             int strengthPoints = Integer.parseInt(inputFile.nextLine());
@@ -147,7 +143,6 @@ public class Model {
         inputFile = new Scanner(theFile);
         while (inputFile.hasNextLine()) {
             String treasureChestName = inputFile.nextLine();
-            //Double roomNumber = Double.parseDouble(inputFile.nextLine());
             LinkedList<Double> rooms = new LinkedList<Double>();
 
             String roomsString = inputFile.nextLine();
@@ -176,14 +171,9 @@ public class Model {
                 }
             }
             TreasureChest treasureChest = new TreasureChest(powerUps,treasureChestName);
-            //treasureChestMap.put(roomNumber,treasureChest);
             for(Double roomNumber : rooms){
                 treasureChestMap.put(roomNumber, treasureChest);
             }
-            // TEST
-//            treasureChestMap.put(treasureChest, rooms);
-//            System.out.println(treasureChest);
-//            System.out.println(treasureChestMap.toString());
         }
 
 
@@ -203,7 +193,7 @@ public class Model {
                 p1.addToInventory(item);
                 // remove item from room
                 currentRoom.removeItem(item);
-                ConsoleView.successMessage(ANSI_PURPLE + itemName + " has been picked up" + ANSI_RESET);
+                ConsoleView.successMessage(itemName + " has been picked up");
             }
         }
     }
@@ -233,11 +223,9 @@ public class Model {
                     boolean isWeapon = item instanceof Weapon;
                     if (isWeapon) {
                         p1.setStrength(p1.getStrength() + ((Weapon) item).strengthPoints);
-                        // TEST LINE -> DELETE LATER
-                        System.out.println("Player Strength: " + p1.getStrength());
+                        ConsoleView.successMessage("Player Strength has been increased " + p1.getStrength());
                     }
-                    // TEST LINE -> DELETE LATER
-                    System.out.println("Equipped: " + p1.getEquippedItems().toString());
+                    ConsoleView.successMessage(itemName + " has been equipped\nEquipped Items: " + p1.getEquippedItems().toString());
                 }
             }
         }
@@ -249,7 +237,7 @@ public class Model {
     //[HOLLY] unequipItem -> Unequips an inventory item
     public static void unequipItem(String itemName) {
         boolean equipped = p1.getEquippedItems().contains(itemName.toUpperCase());
-        // checks if item is equipped
+        // if item is equipped
         if(equipped){
             for (Item item : p1.getPlayerInventory()) {
                 // if item in inventory
@@ -259,13 +247,14 @@ public class Model {
                     boolean isWeapon = item instanceof Weapon;
                     if (isWeapon) {
                         p1.setStrength(p1.getStrength() - ((Weapon) item).strengthPoints);
-                        // TEST LINE -> DELETE LATER
-                        System.out.println("Player Strength: " + p1.getStrength());
+                        ConsoleView.successMessage(itemName + " has been unequipped\nEquipped Items:"  + p1.getEquippedItems().toString()+ "\n[NOTE: Unequipping a weapon decreases the player's strength]");
+                    }else{
+                        ConsoleView.successMessage(itemName + " has been unequipped\nEquipped Items:" + p1.getEquippedItems().toString() );
                     }
                 }
             }
         }else{
-            ConsoleView.showErrorMessage(ANSI_PURPLE + "Item not equipped" + ANSI_RESET);
+            ConsoleView.showErrorMessage("Item not equipped");
         }
     }
 
@@ -273,7 +262,7 @@ public class Model {
     public static void inspectItem(String itemName) {
         for (Item item : p1.getPlayerInventory()) {
             if (item.getItemName().equalsIgnoreCase(itemName)) {
-                ConsoleView.showItemDesc( ANSI_PURPLE + item.inspect() + ANSI_RESET);
+                ConsoleView.showItemDesc( item.inspect());
             }
         }
 
@@ -295,7 +284,7 @@ public class Model {
         for(PowerUp p : avaliblePowerups){
             if(p.type.equalsIgnoreCase(powerUp)){
                 p.activate(p1);
-                System.out.println(ANSI_PURPLE + p1.getStats() + ANSI_RESET);
+                ConsoleView.successMessage(p1.getStats());
                 treasureChestMap.remove(currentRoom.getRoomNumber());
             }
         }
