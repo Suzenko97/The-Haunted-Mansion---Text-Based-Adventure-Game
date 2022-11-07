@@ -5,6 +5,7 @@ import java.util.*;
 public class Model {
     public static Room currentRoom;
     public static final String ANSI_PURPLE = "\033[0;35m";
+    public static final String ANSI_RED = "\033[0;31m";
     public static final String ANSI_RESET = "\u001B[0m";
     static HashMap<Double, Room> map;
     // [HOLLY] TreasureChestMap -> Maps treasure chests to a room
@@ -198,7 +199,7 @@ public class Model {
     //[HOLLY]  Pick up Item - >  Add item to inventory
     public static void pickUpItem(String itemName) {
         for (Item item : currentRoom.getRoomInventory()) {
-            if (item.itemName.equalsIgnoreCase(itemName)) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
                 p1.addToInventory(item);
                 // remove item from room
                 currentRoom.removeItem(item);
@@ -209,19 +210,15 @@ public class Model {
 
     //[HOLLY] Drop Item -> drops item from inventory
     public static void dropItem(String itemName) {
-        for (Item item : p1.getPlayerInventory()) {
+        LinkedList<Item> copyOfInventory = p1.getPlayerInventory();
+        for (Item item : copyOfInventory ){
             //if item in inventory
-            if (item.itemName.equalsIgnoreCase(itemName)) {
-                // and item not equipped -> drop item
-                if (!p1.getEquippedItems().contains(item.itemName.toUpperCase())) {
+            if (item.getItemName().equalsIgnoreCase(itemName) && !p1.getEquippedItems().contains(itemName.toUpperCase())) {
                     p1.removeFromInventory(item);
                     // add item to room
                     currentRoom.addItem(item);
-                } else {
-                    ConsoleView.showErrorMessage("You must unequip an item before dropping it");
                 }
             }
-        }
     }
 
     //[HOLLY] Equip Item -> Equips an inventory item
@@ -229,9 +226,9 @@ public class Model {
         boolean inInventory = false;
         for (Item item : p1.getPlayerInventory()) {
             // if item in inventory -> equip
-            if (item.itemName.equalsIgnoreCase(itemName)) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
                 inInventory = true;
-                p1.addToEquipped(item.itemName.toUpperCase());
+                p1.addToEquipped(item.getItemName().toUpperCase());
                 // if item is weapon, increase strength points
                 boolean isWeapon = item instanceof Weapon;
                 if (isWeapon) {
@@ -250,38 +247,59 @@ public class Model {
 
     //[HOLLY] unequipItem -> Unequips an inventory item
     public static void unequipItem(String itemName) {
+        boolean equipped = p1.getEquippedItems().contains(itemName.toUpperCase());
         // checks if item is equipped
-        for (Item item : p1.getPlayerInventory()) {
-            // if item in inventory
-            if (item.itemName.equalsIgnoreCase(itemName)) {
-                p1.removeFromEquipped(item.itemName.toUpperCase());
-                // if item is weapon, remove strength points
-                boolean isWeapon = item instanceof Weapon;
-                if (isWeapon) {
-                    p1.setStrength(p1.getStrength() - ((Weapon) item).strengthPoints);
-                    // TEST LINE -> DELETE LATER
-                    System.out.println("Player Strength: " + p1.getStrength());
+        if(equipped){
+            for (Item item : p1.getPlayerInventory()) {
+                // if item in inventory
+                if (item.getItemName().equalsIgnoreCase(itemName)) {
+                    p1.removeFromEquipped(item.getItemName().toUpperCase());
+                    // if item is weapon, remove strength points
+                    boolean isWeapon = item instanceof Weapon;
+                    if (isWeapon) {
+                        p1.setStrength(p1.getStrength() - ((Weapon) item).strengthPoints);
+                        // TEST LINE -> DELETE LATER
+                        System.out.println("Player Strength: " + p1.getStrength());
+                    }
                 }
             }
+        }else{
+            ConsoleView.showErrorMessage(ANSI_PURPLE + "Item not equipped" + ANSI_RESET);
         }
     }
 
     // [HOLLY] -> Inspect Item -> Inspects item if it is inventory
     public static void inspectItem(String itemName) {
         for (Item item : p1.getPlayerInventory()) {
-            if (item.itemName.equalsIgnoreCase(itemName)) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
                 ConsoleView.showItemDesc( ANSI_PURPLE + item.inspect() + ANSI_RESET);
             }
         }
 
     }
-    // [HOLLY] ->opens treasure chest if it is current room [NOTE: ADD CHECK MONSTER TO IF CONDITIONAL]
+    // [HOLLY] chestCheck -> checks if current room has treasure chest
+    public static boolean chestCheck(){
+        return treasureChestMap.containsKey(Model.currentRoom.getRoomNumber());
+    }
+    // [HOLLY] -> opens treasure chest if it in the current room [NOTE: ADD CHECK MONSTER TO IF CONDITIONAL]
     public static void openChest(){
-        if(treasureChestMap.containsKey(Model.currentRoom.getRoomNumber())){
+        if(chestCheck()){
             ConsoleView.treasureMessage(treasureChestMap.get(currentRoom.getRoomNumber()).open());
         }
     }
 
+    // [HOLLY] -> activates chosen power up
+    public static void activatePowerup(String powerUp){
+        LinkedList<PowerUp> avaliblePowerups = treasureChestMap.get(currentRoom.getRoomNumber()).getPowerups();
+        for(PowerUp p : avaliblePowerups){
+            if(p.type.equalsIgnoreCase(powerUp)){
+                p.activate(p1);
+                System.out.println(ANSI_PURPLE + p1.getStats() + ANSI_RESET);
+                treasureChestMap.remove(currentRoom.getRoomNumber());
+            }
+        }
+
+    }
     /*[NAJEE]*/
     public static void quitGame() {
         System.exit(0);

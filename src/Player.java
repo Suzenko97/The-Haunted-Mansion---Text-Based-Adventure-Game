@@ -80,4 +80,17 @@ public class Player {
     public void setHealth(int health) {
         this.health = health;
     }
+
+    public Item inventoryContains(String itemName){
+        for (Item item : inventory) {
+            if (item.getItemName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public String getStats() {
+        return "Health: " + health + "\nStrength: " + strength +"\nSpeed: " + speed;
+    }
 }

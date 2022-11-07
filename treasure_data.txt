@@ -5,7 +5,7 @@ A silver longsword
 500
 ----
 Treasure Chest 2
-1.0,8.0,5.0,14.0
+8.0,5.0,14.0
 health
 A powerup item that increases the player’s health by 100
 100

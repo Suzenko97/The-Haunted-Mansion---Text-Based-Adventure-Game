@@ -3,14 +3,15 @@ help to defend against enemies, or initiate  puzzles.
  */
 
 public class Item {
-    String itemName;
-    String itemDescription;
+    private String itemName;
+    private String itemDescription;
 
 
     public Item(String itemName, String itemDescription) {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
     }
+
 
     public String getItemName() {
         return itemName;

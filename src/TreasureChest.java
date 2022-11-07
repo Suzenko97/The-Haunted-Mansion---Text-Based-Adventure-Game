@@ -15,6 +15,10 @@ public class TreasureChest {
         return powerups;
     }
 
+    public LinkedList<PowerUp> getPowerups() {
+        return powerups;
+    }
+
     @Override
     public String toString() {
         return treasureChestName + ": " + powerups.toString();

@@ -44,7 +44,7 @@ public class Controller {
             }
             // [HOLLY] -> Inspect Room Command (NOT REQUIRED IN SRS) being used for testing purposes
             else if(input.contains("inspect room")){
-                System.out.println(Model.currentRoom.inspectRoom());
+                ConsoleView.successMessage(Model.currentRoom.inspectRoom());
             }
             // [HOLLY] -> Inspect Item Command
             else if(input.contains("inspect ")){
@@ -62,7 +62,14 @@ public class Controller {
             }
             // [HOLLY] opens chest
             else if (input.contains("open chest")){
-                Model.openChest();
+                if(Model.chestCheck()){
+                    Model.openChest();
+                    String chosenPowerUp = userInput.nextLine();
+                    chosenPowerUp = chosenPowerUp.toLowerCase();
+                    Model.activatePowerup(chosenPowerUp);
+                }else{
+                    ConsoleView.showErrorMessage("There is no treasure chest in this room");
+                }
             }
             else if (input.contains("exit")){
                 play = false;
