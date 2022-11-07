@@ -223,25 +223,26 @@ public class Model {
 
     //[HOLLY] Equip Item -> Equips an inventory item
     public static void equipItem(String itemName) {
-        boolean inInventory = false;
-        for (Item item : p1.getPlayerInventory()) {
-            // if item in inventory -> equip
-            if (item.getItemName().equalsIgnoreCase(itemName)) {
-                inInventory = true;
-                p1.addToEquipped(item.getItemName().toUpperCase());
-                // if item is weapon, increase strength points
-                boolean isWeapon = item instanceof Weapon;
-                if (isWeapon) {
-                    p1.setStrength(p1.getStrength() + ((Weapon) item).strengthPoints);
+        boolean equipped = p1.getEquippedItems().contains(itemName.toUpperCase());
+        if(!equipped){
+            for (Item item : p1.getPlayerInventory()) {
+                // if item in inventory -> equip
+                if (item.getItemName().equalsIgnoreCase(itemName)) {
+                    p1.addToEquipped(item.getItemName().toUpperCase());
+                    // if item is weapon, increase strength points
+                    boolean isWeapon = item instanceof Weapon;
+                    if (isWeapon) {
+                        p1.setStrength(p1.getStrength() + ((Weapon) item).strengthPoints);
+                        // TEST LINE -> DELETE LATER
+                        System.out.println("Player Strength: " + p1.getStrength());
+                    }
                     // TEST LINE -> DELETE LATER
-                    System.out.println("Player Strength: " + p1.getStrength());
+                    System.out.println("Equipped: " + p1.getEquippedItems().toString());
                 }
-                // TEST LINE -> DELETE LATER
-                System.out.println("Equipped: " + p1.getEquippedItems().toString());
             }
         }
-        if (!inInventory) {
-            ConsoleView.showErrorMessage("Item not in inventory");
+        else{
+            ConsoleView.showErrorMessage("Item already equipped");
         }
     }
 
