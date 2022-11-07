@@ -2,8 +2,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class TreasureChest {
-    String treasureChestName;
-    LinkedList<PowerUp> powerups;
+    private String treasureChestName;
+    private LinkedList<PowerUp> powerups;
 
 
     public TreasureChest(LinkedList<PowerUp> powerups, String treasureChestName) {

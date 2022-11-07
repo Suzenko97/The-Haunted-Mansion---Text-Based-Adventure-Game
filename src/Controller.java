@@ -10,6 +10,7 @@ public class Controller {
         String input;
         ConsoleView.introMessage();
         ConsoleView.showRoom(Model.getRoom());
+
         while (play){
             ConsoleView.directionList(Model.getDirectionList());
             ConsoleView.navRequest();
@@ -59,9 +60,14 @@ public class Controller {
             else if(input.contains("check inventory")){
                 Model.checkInventory();
             }
+            // [HOLLY] opens chest
+            else if (input.contains("open chest")){
+                Model.openChest();
+            }
             else if (input.contains("exit")){
                 play = false;
             }
+
         }
         ConsoleView.quitMessage();
         Model.quitGame();

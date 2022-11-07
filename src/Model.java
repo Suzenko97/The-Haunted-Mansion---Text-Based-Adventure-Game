@@ -1,16 +1,15 @@
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Model {
     public static Room currentRoom;
-    public static final String ANSI_PURPLE_BACKGROUND = "\033[0;35m";
+    public static final String ANSI_PURPLE = "\033[0;35m";
     public static final String ANSI_RESET = "\u001B[0m";
     static HashMap<Double, Room> map;
     // [HOLLY] TreasureChestMap -> Maps treasure chests to a room
     //static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
-    static HashMap<TreasureChest, LinkedList<Double>> treasureChestMap = new HashMap<>();
+    static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
 
     static Player p1 = new Player(1);
 
@@ -177,9 +176,13 @@ public class Model {
             }
             TreasureChest treasureChest = new TreasureChest(powerUps,treasureChestName);
             //treasureChestMap.put(roomNumber,treasureChest);
-            treasureChestMap.put(treasureChest, rooms);
-            System.out.println(treasureChest);
-            System.out.println(treasureChestMap.toString());
+            for(Double roomNumber : rooms){
+                treasureChestMap.put(roomNumber, treasureChest);
+            }
+            // TEST
+//            treasureChestMap.put(treasureChest, rooms);
+//            System.out.println(treasureChest);
+//            System.out.println(treasureChestMap.toString());
         }
 
 
@@ -199,8 +202,7 @@ public class Model {
                 p1.addToInventory(item);
                 // remove item from room
                 currentRoom.removeItem(item);
-
-                System.out.println(ANSI_PURPLE_BACKGROUND + itemName + " has been picked up" + ANSI_RESET);
+                ConsoleView.successMessage(ANSI_PURPLE + itemName + " has been picked up" + ANSI_RESET);
             }
         }
     }
@@ -264,18 +266,25 @@ public class Model {
         }
     }
 
+    // [HOLLY] -> Inspect Item -> Inspects item if it is inventory
+    public static void inspectItem(String itemName) {
+        for (Item item : p1.getPlayerInventory()) {
+            if (item.itemName.equalsIgnoreCase(itemName)) {
+                ConsoleView.showItemDesc( ANSI_PURPLE + item.inspect() + ANSI_RESET);
+            }
+        }
+
+    }
+    // [HOLLY] ->opens treasure chest if it is current room [NOTE: ADD CHECK MONSTER TO IF CONDITIONAL]
+    public static void openChest(){
+        if(treasureChestMap.containsKey(Model.currentRoom.getRoomNumber())){
+            ConsoleView.treasureMessage(treasureChestMap.get(currentRoom.getRoomNumber()).open());
+        }
+    }
+
     /*[NAJEE]*/
     public static void quitGame() {
         System.exit(0);
     }
 
-    // [HOLLY] -> Inspect Item -> Inspects item if it is inventory
-    public static void inspectItem(String itemName) {
-        for (Item item : p1.getPlayerInventory()) {
-            if (item.itemName.equalsIgnoreCase(itemName)) {
-                ConsoleView.showItemDesc(item.inspect());
-            }
-        }
-
-    }
 }

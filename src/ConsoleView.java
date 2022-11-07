@@ -2,22 +2,26 @@ import java.util.LinkedList;
 
 public class ConsoleView {
 
+    public static final String ANSI_PURPLE = "\033[0;35m";
+    public static final String ANSI_RESET = "\u001B[0m";
+
     public static void introMessage(){
         System.out.println("Welcome to the Haunted Mansion game! Have fun!\n");
     }
     public static void navRequest (){
         System.out.println("Which direction would you like to go or do you want to exit?");
     }
-
+    // [HOLLY] successMessage -> prints out success statements (i.e item succesffuly dropped/picked etc)
+    public static void successMessage(String message){System.out.println(message);}
     // [HOLLY] showInventory -> prints out list of items in inventory
     public static void showInventory (LinkedList<Item> inventory){
         System.out.println(inventory.toString());
     }
     // [HOLLY] TreasureMessage -> prints out list of treasure chest items to choose from
-    public static void TreasureMessage (LinkedList<PowerUp> powerUps){
-        System.out.println("Choose a powerup:");
+    public static void treasureMessage (LinkedList<PowerUp> powerUps){
+        System.out.println(ANSI_PURPLE +"Choose a powerup:" + ANSI_RESET);
         for(PowerUp powerUp : powerUps){
-            System.out.println(powerUp);
+            System.out.println(ANSI_PURPLE + "-" + powerUp + ANSI_RESET);
         }
     }
 
