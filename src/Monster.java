@@ -66,8 +66,8 @@ public class Monster {
     public String getItems() {
         return items;
     }
+
     public void setItems(String items) {
         this.items = items;
     }
-
 }
