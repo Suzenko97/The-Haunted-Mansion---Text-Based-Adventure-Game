@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Player {
     private double location;
@@ -10,7 +9,9 @@ public class Player {
     private int health;
 
     // [HOLLY] inventory -> collection of all pick up items
-    private  LinkedList<Item> inventory = new LinkedList<>();
+//    private  LinkedList<Item> inventory = new LinkedList<>();
+
+    public HashMap<String , Item > inventory = new HashMap();
 
     // [HOLLY] equippedItems -> collection of all equipped items on player
     private  LinkedList<String> equippedItems = new LinkedList<>();
@@ -29,17 +30,21 @@ public class Player {
 
     // [HOLLY] -> addToInventory: adds specified item to player inventory
     public void addToInventory(Item item){
-        inventory.add(item);
+        inventory.put(item.getItemName(), item);
     }
 
     // [HOLLY] -> removeFromInventory: removes specified item from player's inventory
     public void removeFromInventory(Item item) {
-        inventory.remove(item);
+        inventory.remove(item.getItemName());
     }
 
     // [HOLLY] -> getPlayerInventory: returns list of items in player's inventory
     public LinkedList<Item> getPlayerInventory(){
-        return this.inventory;
+        LinkedList<Item> itemsInInventory = new LinkedList<>();
+        for (Map.Entry<String, Item> item :inventory.entrySet()) {
+            itemsInInventory.add(item.getValue());
+        }
+        return itemsInInventory;
     }
 
     // [HOLLY] -> addToEquipped: adds specified item to equippedItems
@@ -81,13 +86,8 @@ public class Player {
         this.health = health;
     }
 
-    public Item inventoryContains(String itemName){
-        for (Item item : inventory) {
-            if (item.getItemName().equalsIgnoreCase(itemName)) {
-                return item;
-            }
-        }
-        return null;
+    public boolean inventoryContains(String itemName){
+        return inventory.containsKey(itemName);
     }
 
     public String getStats() {

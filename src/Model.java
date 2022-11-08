@@ -272,12 +272,9 @@ public class Model {
 
     // [HOLLY] -> Inspect Item -> Inspects item if it is inventory
     public static void inspectItem(String itemName) {
-        for (Item item : p1.getPlayerInventory()) {
-            if (item.getItemName().equalsIgnoreCase(itemName)) {
-                ConsoleView.showItemDesc( item.inspect());
-            }
+        if(p1.inventoryContains(itemName)){
+            ConsoleView.showItemDesc( p1.inventory.get(itemName).inspect());
         }
-
     }
     // [HOLLY] chestCheck -> checks if current room has treasure chest
     public static boolean chestCheck(){
