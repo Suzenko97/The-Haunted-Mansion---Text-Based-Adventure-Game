@@ -1,0 +1,12 @@
+Backpack
+A necessary item in the game to store things pickup up throughout the game.
+1.0
+Flashlight
+This necessary item is a small handheld flashlight that can be stored in the backpack.
+1.0
+Book
+Book on how to survive
+3.0
+Memorial Parchment
+This parchment explains more about the history of the mansion, why it’s haunted and what’s going on.
+10.0

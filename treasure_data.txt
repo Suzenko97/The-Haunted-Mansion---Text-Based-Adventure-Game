@@ -1,0 +1,18 @@
+Treasure Chest 1
+23.0
+silver sword
+A silver longsword
+500
+----
+Treasure Chest 2
+8.0,5.0,14.0
+health
+A powerup item that increases the player’s health by 100
+100
+speed
+A powerup item that increases the player’s speed briefly for 10 seconds. This is helpful in avoiding attacks from monsters.
+10
+strength
+A powerup item that increases the player’s strength by 100 and makes the player more resistant to enemy attacks.
+100
+----
