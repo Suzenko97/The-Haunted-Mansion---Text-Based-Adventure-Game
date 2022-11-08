@@ -16,7 +16,7 @@ public class ConsoleView {
     public static void successMessage(String message){System.out.println(ANSI_PURPLE + message + ANSI_RESET);}
     // [HOLLY] showInventory -> prints out list of items in inventory
     public static void showInventory (LinkedList<Item> inventory){
-        System.out.println(ANSI_PURPLE + inventory.toString() + ANSI_RESET);
+        System.out.println(ANSI_PURPLE + "Inventory: "  + inventory.toString() + ANSI_RESET);
     }
     // [HOLLY] TreasureMessage -> prints out list of treasure chest items to choose from
     public static void treasureMessage (LinkedList<PowerUp> powerUps){

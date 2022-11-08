@@ -200,15 +200,20 @@ public class Model {
 
     //[HOLLY] Drop Item -> drops item from inventory
     public static void dropItem(String itemName) {
-        LinkedList<Item> copyOfInventory = p1.getPlayerInventory();
-        for (Item item : copyOfInventory ){
-            //if item in inventory
+        Item itemToRemove = null;
+        boolean inInventory = false;
+        for (Item item : p1.getPlayerInventory()) {
+            //if item in inventory + not equipped
             if (item.getItemName().equalsIgnoreCase(itemName) && !p1.getEquippedItems().contains(itemName.toUpperCase())) {
-                    p1.removeFromInventory(item);
-                    // add item to room
-                    currentRoom.addItem(item);
-                }
+                inInventory = true;
+                itemToRemove = item;
             }
+        }
+        if(inInventory) {
+            p1.removeFromInventory(itemToRemove);
+            // add item to room
+            currentRoom.addItem(itemToRemove);
+        }
     }
 
     //[HOLLY] Equip Item -> Equips an inventory item
