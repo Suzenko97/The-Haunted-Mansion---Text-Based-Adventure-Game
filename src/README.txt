@@ -13,9 +13,7 @@ West Room Number
 *If there is no room in a given direction, room number set to 0*
 _________________________________________________________________
 -----Item File Structure-----
-Item Class (Useable/Eqippable)
 Item Name
-ID
 Description
 Room Location Number
 _________________________________________________________________
