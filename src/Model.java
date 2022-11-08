@@ -188,13 +188,18 @@ public class Model {
 
     //[HOLLY]  Pick up Item - >  Add item to inventory
     public static void pickUpItem(String itemName) {
+        boolean inInventory = false;
         for (Item item : currentRoom.getRoomInventory()) {
             if (item.getItemName().equalsIgnoreCase(itemName)) {
+                inInventory = true;
                 p1.addToInventory(item);
                 // remove item from room
                 currentRoom.removeItem(item);
                 ConsoleView.successMessage(itemName + " has been picked up");
             }
+        }
+        if(!inInventory){
+            ConsoleView.showErrorMessage("Item not in room");
         }
     }
 
@@ -213,6 +218,8 @@ public class Model {
             p1.removeFromInventory(itemToRemove);
             // add item to room
             currentRoom.addItem(itemToRemove);
+        }else{
+            ConsoleView.showErrorMessage("item not in inventory");
         }
     }
 
@@ -278,9 +285,7 @@ public class Model {
     }
     // [HOLLY] -> opens treasure chest if it in the current room [NOTE: ADD CHECK MONSTER TO IF CONDITIONAL]
     public static void openChest(){
-        if(chestCheck()){
             ConsoleView.treasureMessage(treasureChestMap.get(currentRoom.getRoomNumber()).open());
-        }
     }
 
     // [HOLLY] -> activates chosen power up
