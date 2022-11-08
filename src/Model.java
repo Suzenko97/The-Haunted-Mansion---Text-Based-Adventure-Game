@@ -193,7 +193,7 @@ public class Model {
                 String itemName = readLine;
                 String type = itemName;
                 String itemDescription = inputFile.nextLine();
-                Integer points = Integer.parseInt(inputFile.nextLine());
+                int points = Integer.parseInt(inputFile.nextLine());
                 PowerUp powerUp = new PowerUp(itemName,itemDescription,type,points);
                 powerUps.add(powerUp);
                 try{
@@ -213,8 +213,6 @@ public class Model {
         currentRoom = map.get(p1.getLocation());
     }
 
-    ////[NAJEE]/////
-    public static void quitGame() {
     // [HOLLY]  Check Player Inventory
     public static void checkInventory() {
         ConsoleView.showInventory(p1.getPlayerInventory());
@@ -331,10 +329,6 @@ public class Model {
         }
 
     }
-    /*[NAJEE]*/
-    public static void quitGame() {
-        System.exit(0);
-    }
 
     ////[KELVIN]////
     public static String inspectMonster() {
@@ -411,8 +405,13 @@ public class Model {
                                 Model.gameOver(Monster.monsterList.get(i).getName());
 
                             }
-                            System.out.println("\nMonster current health: "+ Monster.monsterList.get(i).getHealth());
-                            System.out.println("Your current health: "+p1.getHealth());
+                            if (!(Monster.monsterList.get(i).getHealth() <= 0)) {
+                                System.out.println("\nMonster current health: " + Monster.monsterList.get(i).getHealth());
+                                System.out.println("Your current health: " + p1.getHealth());
+                            }
+                            else {
+                                System.out.println("Yay you killed it.\n");
+                            }
                         }
                     }
                 }
@@ -421,7 +420,7 @@ public class Model {
                 }
             }
         }
-        if (hasMonster==false){
+        if (!hasMonster){
             Monster.monsterList.remove(monsterToRemove);
             ConsoleView.noMonsterInRoomMessage();
             String retryString="";
@@ -443,5 +442,8 @@ public class Model {
         ConsoleView.gameOverMessage(monsterName);
     }
 
-
+    /*[NAJEE]*/
+    public static void quitGame() {
+        System.exit(0);
+    }
 }

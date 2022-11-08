@@ -1,7 +1,6 @@
 import java.util.LinkedList;
 
 public class ConsoleView {
-
     public static final String ANSI_PURPLE = "\033[0;35m";
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\033[0;31m";
