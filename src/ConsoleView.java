@@ -51,4 +51,15 @@ public class ConsoleView {
     public static void printMonsterDenial(){
         System.out.println("Cannot proceed, monster is in this room. You will not be able to leave unless you fight.\nAttack monster to start combat.");
     }
+
+    public static void gameOverMessage(String monsterName){
+        System.out.println("You were slain by " + monsterName);
+        System.out.println("Would you like to start over from most recent checkpoint?");
+    }
+    public static void gameRestartedFromCheckpoint(){
+        System.out.println("Game restarted from checkpoint!");
+    }
+    public static void thankYouForPlaying(){
+        System.out.println("Thank you for playing!!");
+    }
 }
