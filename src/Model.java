@@ -97,11 +97,38 @@ public class Model {
         }
         inputFile.close();
 
+        // Omar Puzzle SetUp //
+        fileName = "puzzle_data.txt";
+        theFile = new File(fileName);
+        inputFile = new Scanner(theFile);
+
+        while(inputFile.hasNextLine()){
+            int PuzzleID = Integer.parseInt(inputFile.nextLine());
+            String PuzzleQues = inputFile.nextLine();
+            String PuzzleAns = inputFile.nextLine();
+            int Attempts = Integer.parseInt(inputFile.nextLine());
+            double PuzzleLocate = Double.parseDouble(inputFile.nextLine());
+            Puzzle PuzzleOBJ = new Puzzle(PuzzleID, PuzzleQues, PuzzleAns, Attempts, PuzzleLocate);
+            Puzzle.puzzleList.add(PuzzleOBJ);
+        }
+        inputFile.close();
+
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
     }
 
     /*[NAJEE]*/public static void quitGame(){
         System.exit(0);
+    }
+
+    public static void solvePuzzle(){
+        Scanner puzzleChoice= new Scanner(System.in);
+        String puzzleChoiceString="";
+        if (Puzzle.puzzleList.PuzzleLocate)
+            System.out.println("Solve puzzle?");
+        puzzleChoiceString=puzzleChoice.nextLine();
+        if (puzzleChoiceString.toLowerCase().contains("yes")){
+
+        }
     }
 }
