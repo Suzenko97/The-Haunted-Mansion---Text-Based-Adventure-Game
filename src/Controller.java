@@ -50,7 +50,6 @@ public class Controller {
             }
             // [HOLLY] -> Unequip Item Command
             else if(input.contains("unequip ")){
-                System.out.println("unequip detected");
                 String itemName = input.replaceAll("unequip ", "");
                 Model.unequipItem(itemName);
             }
