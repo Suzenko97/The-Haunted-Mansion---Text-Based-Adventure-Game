@@ -87,6 +87,9 @@ public class Controller {
                     ConsoleView.showErrorMessage("There is no treasure chest in this room");
                 }
             }
+            else if (input.equalsIgnoreCase("map")){
+                ConsoleView.printCompassInfo(Model.getCompassInfo());
+            }
             else if (input.contains("exit")){
                 play = false;
             }

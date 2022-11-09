@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_11_9_2022_6_22_PM_[Changes]" date="1668036124240" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_11_9_2022_6_22_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 11/9/2022 6:22 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Cobra-Fall2022/ConsoleView.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Cobra-Fall2022/Room.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Cobra-Fall2022/Model.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Cobra-Fall2022/Controller.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>

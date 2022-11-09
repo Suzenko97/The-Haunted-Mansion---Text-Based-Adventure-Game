@@ -9,12 +9,21 @@ public class Model {
     static Room currentRoom;
     // [HOLLY] TreasureChestMap -> Maps treasure chests to a room
     static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
+    final static int TOTALROOMCOUNT = 31;
+    static int compass = 0;
 
-    /*[NAJEE]*/public static StringBuilder getRoom(){
+    /*[NAJEE]*/
+    public static StringBuilder getRoom(){
         return currentRoom.getDesc();
     }
 
-    /*[NAJEE]*/public static StringBuilder getDirectionList() throws FileNotFoundException {
+    /*[NAJEE]*/
+    public static int getCompassInfo(){
+        return compass;
+    }
+
+    /*[NAJEE]*/
+    public static StringBuilder getDirectionList() throws FileNotFoundException {
         double[] tmpArr = currentRoom.getDirections();
         StringBuilder dirList = new StringBuilder();
         for (int i = 0; i < 4; i++) {
@@ -28,6 +37,7 @@ public class Model {
         return dirList;
     }
 
+    /*[NAJEE]*/
     public static boolean checkForMonster(){
         boolean hasMonster = false;
         for (Monster m : Monster.monsterList){
@@ -49,6 +59,7 @@ public class Model {
                 if (directionOptions[0] != (double) 0) {
                     p1.setLastVisited(currentRoom.getRoomNumber());
                     currentRoom = map.get(directionOptions[0]);
+                    currentRoom.setVisitedStatus();
                     success = true;
                 }
                 break;
@@ -56,6 +67,7 @@ public class Model {
                 if (directionOptions[1] != (double) 0) {
                     p1.setLastVisited(currentRoom.getRoomNumber());
                     currentRoom = map.get(directionOptions[1]);
+                    currentRoom.setVisitedStatus();
                     success = true;
                 }
                 break;
@@ -63,6 +75,7 @@ public class Model {
                 if (directionOptions[2] != (double) 0) {
                     p1.setLastVisited(currentRoom.getRoomNumber());
                     currentRoom = map.get(directionOptions[2]);
+                    currentRoom.setVisitedStatus();
                     success = true;
                 }
                 break;
@@ -70,6 +83,7 @@ public class Model {
                 if (directionOptions[3] != (double) 0) {
                     p1.setLastVisited(currentRoom.getRoomNumber());
                     currentRoom = map.get(directionOptions[3]);
+                    currentRoom.setVisitedStatus();
                     success = true;
                 }
                 break;

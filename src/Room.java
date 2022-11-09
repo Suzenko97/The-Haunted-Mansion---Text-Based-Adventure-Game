@@ -7,6 +7,7 @@ public class Room {
     // [HOLLY] Room Inventory Attribute ->  list of items available in room
     private final LinkedList<Item> roomInventory = new LinkedList<>();
     private double[] directions = new double[4];
+    private boolean visited = false;
 
     public Room(double roomNumber, String roomName, String desc) {
         this.roomNumber = roomNumber;
@@ -25,6 +26,13 @@ public class Room {
 
     public StringBuilder getDesc() {
         return formatDesc();
+    }
+
+    public void setVisitedStatus (){
+        if (!visited){
+            this.visited = true;
+            Model.compass += 1;
+        }
     }
 
     public double[] getDirections() {

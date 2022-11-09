@@ -41,6 +41,10 @@ public class ConsoleView {
         System.out.println(desc);
     }
 
+    public static void printCompassInfo(int compass){
+        System.out.println("You've visited " + compass + " rooms out of a total of 31.\n");
+    }
+
     public static void navDenial(){
         System.out.println("You cannot go in that direction. Try something else....");
     }
