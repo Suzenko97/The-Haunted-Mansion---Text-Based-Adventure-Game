@@ -1,3 +1,4 @@
+import java.io.Console;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -55,7 +56,12 @@ public class Controller {
             }
             // [HOLLY] -> Inspect Room Command (NOT REQUIRED IN SRS) being used for testing purposes
             else if(input.contains("inspect room")){
-                ConsoleView.successMessage(Model.currentRoom.inspectRoom());
+                if(!(Model.checkForMonster())){
+                    ConsoleView.successMessage(Model.currentRoom.inspectRoom());
+                }
+                else{
+                    ConsoleView.printInspectDenial();
+                }
             }
             // [HOLLY] -> Inspect Item Command
             else if(input.contains("inspect ")){

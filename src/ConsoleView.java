@@ -87,4 +87,8 @@ public class ConsoleView {
         System.out.println("Thank you for playing!!");
     }
 
+    public static void printInspectDenial(){
+        System.out.println("You cannot look around when there's a monster nearby.\n");
+    }
+
 }
