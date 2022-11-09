@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="394c847a-35f1-4a4d-9f40-8549be3b2435" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/ConsoleView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/ConsoleView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Cobra-Fall2022/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConsoleView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

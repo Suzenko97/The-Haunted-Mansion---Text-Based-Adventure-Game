@@ -410,7 +410,9 @@ public class Model {
                                 System.out.println("Your current health: " + p1.getHealth());
                             }
                             else {
-                                System.out.println("Yay you killed it.\n");
+                                p1.addKeyPieces(1);
+                                System.out.println("Yay you killed it.");
+                                System.out.println("You've acquired 1/4 of the key.\n");
                             }
                         }
                     }

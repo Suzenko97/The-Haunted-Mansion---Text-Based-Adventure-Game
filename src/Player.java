@@ -6,6 +6,7 @@ public class Player {
     private int health;
     private double lastVisited;
     private double speed;
+    private int keyPieces = 0;
 
 
     public Player (double initRoom,int strength,int health,double lastVisited,double speed) {
@@ -28,6 +29,10 @@ public class Player {
 
     public void setSpeed(double speed) {
         this.speed = speed;
+    }
+
+    public void addKeyPieces (int piece){
+        this.keyPieces += piece;
     }
 
     public double getLastVisited() {
