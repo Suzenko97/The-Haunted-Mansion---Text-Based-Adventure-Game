@@ -7,15 +7,13 @@ public class Puzzle {
     private String PuzzleAns;
     private int Attempts;
     private boolean check = false;
-    private double PuzzleLocate;
     private final String checked = "I've seen this puzzle before";
     static ArrayList<Puzzle> puzzleList = new ArrayList<>();
-    public Puzzle(int PuzzleID, String PuzzleQues, String PuzzleAns, int Attempts, double PuzzleLocate) {
+    public Puzzle(int PuzzleID, String PuzzleQues, String PuzzleAns, int Attempts) {
         this.PuzzleID = PuzzleID;
         this.PuzzleQues = PuzzleQues;
         this.PuzzleAns = PuzzleAns;
         this.Attempts = Attempts;
-        this.PuzzleLocate = PuzzleLocate;
     }
 
     // [Omar] Getters and Setters
@@ -49,14 +47,6 @@ public class Puzzle {
 
     public void setAttempts(int attempts) {
         Attempts = attempts;
-    }
-
-    public double getPuzzleLocate() {
-        return PuzzleLocate;
-    }
-
-    public void setPuzzleLocate(double puzzleLocate) {
-        PuzzleLocate = puzzleLocate;
     }
 
     public void setCheck(boolean check) {
