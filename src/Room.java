@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 
+//[NAJEE, HOLLY]//
 public class Room {
     private  double roomNumber;
     private  String roomName;
@@ -13,7 +14,6 @@ public class Room {
         this.roomNumber = roomNumber;
         this.roomName = roomName;
         this.desc = desc;
-        //this.puzzleID = puzzleID;
     }
 
     public double getRoomNumber() {
@@ -28,6 +28,7 @@ public class Room {
         return formatDesc();
     }
 
+    //[NAJEE]//
     public void setVisitedStatus (){
         if (!visited){
             this.visited = true;
@@ -59,6 +60,7 @@ public class Room {
         return roomInventory;
     }
 
+    //[NAJEE]//
     public StringBuilder formatDesc() {
         StringBuilder tmp = new StringBuilder();
         String[] paragraph = this.desc.split("\\.+\\s");

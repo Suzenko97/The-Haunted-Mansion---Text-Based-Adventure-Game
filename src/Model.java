@@ -11,18 +11,28 @@ public class Model {
     static HashMap<Double, TreasureChest> treasureChestMap = new HashMap<>();
     final static int TOTALROOMCOUNT = 31;
     static int compass = 0;
+    static Puzzle puzzle = null;
 
-    /*[NAJEE]*/
+    //[NAJEE, HOLLY, OMAR]//
+    public static void assignPuzzle(){
+        Random rand = new Random();
+        int number = rand.nextInt(Puzzle.puzzleList.size());
+        System.out.println(number);
+        puzzle = Puzzle.puzzleList.get(number);
+        Puzzle.puzzleList.remove(puzzle);
+    }
+
+    //[NAJEE]//
     public static StringBuilder getRoom(){
         return currentRoom.getDesc();
     }
 
-    /*[NAJEE]*/
+    //[NAJEE]//
     public static int getCompassInfo(){
         return compass;
     }
 
-    /*[NAJEE]*/
+    //[NAJEE]//
     public static StringBuilder getDirectionList() throws FileNotFoundException {
         double[] tmpArr = currentRoom.getDirections();
         StringBuilder dirList = new StringBuilder();
@@ -37,7 +47,7 @@ public class Model {
         return dirList;
     }
 
-    /*[NAJEE]*/
+    //[NAJEE]//
     public static boolean checkForMonster(){
         boolean hasMonster = false;
         for (Monster m : Monster.monsterList){
@@ -49,11 +59,10 @@ public class Model {
         return hasMonster;
     }
 
-    /*[NAJEE]*/
+    //[NAJEE]//
     public static boolean movePlayer(String direction) {
         double[] directionOptions = currentRoom.getDirections();
         boolean success = false;
-
         switch (direction.toLowerCase()) {
             case "north":
                 if (directionOptions[0] != (double) 0) {
@@ -91,7 +100,7 @@ public class Model {
         return success;
     }
 
-    /*[All]*/
+    //[All]//
     public static void setup() throws FileNotFoundException {
         String fileName;
         File theFile;
@@ -183,6 +192,21 @@ public class Model {
         }
         inputFile.close();
 
+        // [Omar] Puzzle SetUp //
+        fileName = "puzzle_data.txt";
+        theFile = new File(fileName);
+        inputFile = new Scanner(theFile);
+
+        while(inputFile.hasNextLine()){
+            int PuzzleID = Integer.parseInt(inputFile.nextLine());
+            String PuzzleQues = inputFile.nextLine();
+            String PuzzleAns = inputFile.nextLine();
+            int Attempts = Integer.parseInt(inputFile.nextLine());
+            Puzzle PuzzleOBJ = new Puzzle(PuzzleID, PuzzleQues, PuzzleAns, Attempts);
+            Puzzle.puzzleList.add(PuzzleOBJ);
+        }
+        inputFile.close();
+
         // [HOLLY] -> Treasure Chest File Reading
         fileName = "treasure_data.txt";
         theFile = new File(fileName);
@@ -221,8 +245,6 @@ public class Model {
                 treasureChestMap.put(roomNumber, treasureChest);
             }
         }
-
-
         map = tmpMap;
         currentRoom = map.get(p1.getLocation());
     }
@@ -344,7 +366,7 @@ public class Model {
 
     }
 
-    ////[KELVIN]////
+    //[KELVIN]//
     public static String inspectMonster() {
         String monsterDesc = "";
         for (int i = 0; i < Monster.monsterList.size(); i++) {
@@ -359,7 +381,7 @@ public class Model {
         return monsterDesc;
     }
 
-    ////[KELVIN]////
+    //[KELVIN, NAJEE]//
     public static void startCombat() {
         Scanner combatChoice=new Scanner(System.in);
         String combatChoiceString;
@@ -425,8 +447,8 @@ public class Model {
                             }
                             else {
                                 p1.addKeyPieces(1);
-                                System.out.println("Yay you killed it.");
-                                System.out.println("You've acquired 1/4 of the key.\n");
+                                System.out.println("Yay you killed it!");
+                                System.out.println("You've acquired 1/4 of the key!\n");
                             }
                         }
                     }
@@ -454,11 +476,41 @@ public class Model {
         }
     }
 
+    //[KELVIN]//
     public static void gameOver( String monsterName){
         ConsoleView.gameOverMessage(monsterName);
     }
 
-    /*[NAJEE]*/
+    //[OMAR]//
+    public static void solvePuzzle(){
+        int chances = 0;
+        Scanner scan = new Scanner(System.in);
+        String puzzleChoiceString="";
+        System.out.println("Solve puzzle?");
+        puzzleChoiceString = scan.nextLine();
+        if (puzzleChoiceString.toLowerCase().contains("yes")) {
+            System.out.println(puzzle.getPuzzleQues());
+            while (chances != puzzle.getAttempts()) {
+                String answer = scan.nextLine();
+                if (puzzle.getPuzzleAns().equalsIgnoreCase(answer)) {
+                    System.out.println("The answer is correct.");
+                    openChest();
+                    String chosenPowerUp = scan.nextLine();
+                    chosenPowerUp = chosenPowerUp.toLowerCase();
+                    activatePowerup(chosenPowerUp);
+                    break;
+                } else {
+                    System.out.println("The answer is incorrect, try again!");
+                    chances += 1;
+                }
+            }
+            if (chances == puzzle.getAttempts()) {
+                System.out.println("You're out of attempts.\n");
+            }
+        }
+    }
+
+    //[NAJEE]//
     public static void quitGame() {
         System.exit(0);
     }

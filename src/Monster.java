@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
+//[KELVIN]//
 public class Monster {
-
-
     private String name;
     private double location;
     private String description;

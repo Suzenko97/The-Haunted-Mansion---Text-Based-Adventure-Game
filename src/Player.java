@@ -1,5 +1,6 @@
 import java.util.*;
 
+//[ALL]//
 public class Player {
     private double location;
     private int strength;

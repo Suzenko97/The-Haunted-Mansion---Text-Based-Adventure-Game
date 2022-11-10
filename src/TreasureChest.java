@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 
+//[HOLLY]//
 public class TreasureChest {
     private String treasureChestName;
     private LinkedList<PowerUp> powerups;

@@ -1,3 +1,4 @@
+//[HOLLY]//
 public class Weapon extends Item{
     int strengthPoints;
 

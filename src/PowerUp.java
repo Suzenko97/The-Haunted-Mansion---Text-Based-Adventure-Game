@@ -1,3 +1,4 @@
+//[HOLLY]//
 public class PowerUp extends Item {
     int points;
     String type;

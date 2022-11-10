@@ -2,6 +2,7 @@
 help to defend against enemies, or initiate  puzzles.
  */
 
+//[HOLLY]//
 public class Item {
     private String itemName;
     private String itemDescription;
