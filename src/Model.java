@@ -498,7 +498,6 @@ public class Model {
             }
             if (chances == puzzle.getAttempts()) {
                 System.out.println("You're out of attempts.\n");
-
             }
         }
     }
